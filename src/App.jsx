@@ -48,6 +48,7 @@ const App = () => {
   const CONTACT = {
     phone: "+919214037192",
     display: "+91 92140 37192",
+    mail: "paman9421@gmail.com",
     whatsapp: "919214037192",
     email: "paman9421@gmail.com",
     address: "Shop No. 129 Arundhati Complex Tedhibazar Chauraha - Ayodhya - 224123",
@@ -467,7 +468,7 @@ const App = () => {
         </div>
 
         <p className="text-center mt-12 text-[11px] font-black text-slate-300 uppercase tracking-widest italic">
-          © 2026 Dr Raman Diagnostic | Aman Pandey Initiative | Ayodhya, UP | All Rights Reserved
+          © 2026 Dr Raman Diagnostic | Aman Pandey Initiative | paman9421@gmail.com |Ayodhya, UP | All Rights Reserved
         </p>
       </footer>
 
