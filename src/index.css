@@ -15,27 +15,32 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--color-surface);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-/* Rate List Table Fix for Mobile */
-.rate-table {
-  table-layout: fixed;
+/* Force Table text wrapping to prevent price overflow */
+.rate-table-container {
   width: 100%;
+  overflow-x: hidden;
+}
+
+.rate-table {
+  width: 100%;
+  table-layout: fixed; /* Crucial for keeping prices in the box */
 }
 
 .rate-table td {
+  padding: 12px 8px;
   word-wrap: break-word;
-  white-space: normal;
+  overflow-wrap: break-word;
 }
 
-/* Search Autocomplete Styling */
-.search-suggestion-box {
-  max-height: 250px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
+/* Mobile Safari Input Fix */
+input { font-size: 16px !important; }
 
-@media (max-width: 640px) {
-  .price-text { font-size: 1.1rem !important; }
-  .rate-list-text { font-size: 12px !important; }
+/* Custom Animation for Rate Box */
+@keyframes star-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); color: #fbbf24; }
 }
+.star-animate { animation: star-pulse 2s infinite; }
