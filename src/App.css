@@ -1,46 +1,110 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-@import "tailwindcss";
-
-@theme {
-  --color-primary: #004a99;
-  --color-secondary: #e31e24;
-  --color-accent: #00a651;
-  --color-surface: #f8fafc;
+/* --- MOBILE UI HARDENING (PRICE LOCK) --- */
+/* This prevents long test names from pushing prices out of the box on mobile */
+.rate-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--color-surface);
-  color: #1e293b;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+.rate-table td {
+  word-wrap: break-word;
+  white-space: normal;
+  vertical-align: top;
+  padding: 12px 8px;
 }
 
-/* Fix for mobile card pricing overflow */
-.price-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: 0; /* Ensures container can shrink */
-}
-
+/* Custom price scaling for very small screens */
 @media (max-width: 640px) {
   .price-text {
-    font-size: 1.5rem !important; /* Forces smaller font on mobile to stay in box */
-    line-height: 1 !important;
+    font-size: 1.25rem !important;
+    letter-spacing: -0.05em;
+  }
+  
+  .mrp-text {
+    font-size: 0.75rem !important;
+    opacity: 0.6;
+  }
+
+  .responsive-title {
+    font-size: 1rem !important;
+    line-height: 1.2;
   }
 }
 
-/* Mobile Safari Input Fix */
-input {
-  font-size: 16px !important;
+/* --- SEARCH & SUGGESTIONS --- */
+.search-suggestion-box {
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
 }
 
+/* --- ANIMATIONS --- */
+
+/* Star pulse for the Google Rating component */
+@keyframes star-pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    filter: drop-shadow(0 0 0px #fbbf24);
+  }
+  50% { 
+    transform: scale(1.1); 
+    filter: drop-shadow(0 0 10px #fbbf24);
+    color: #f59e0b;
+  }
+}
+
+.star-glow {
+  animation: star-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Micro-bounce for success/rating icons */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hover-bounce:hover {
+  animation: bounce-slow 0.8s ease-in-out infinite;
+}
+
+/* Glassmorphism for the Navigation */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* --- MODAL TRANSITIONS --- */
+.modal-enter {
+  animation: modal-slide-in 0.3s ease-out forwards;
+}
+
+@keyframes modal-slide-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Scrollbar for the Rate List Modal */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
 }

@@ -2,45 +2,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #004a99;
-  --color-secondary: #e31e24;
-  --color-accent: #00a651;
-  --color-surface: #f8fafc;
+  /* Official Branding Colors */
+  --color-primary: #004a99;    /* Deep Clinical Blue */
+  --color-secondary: #e31e24;  /* Emergency Red */
+  --color-accent: #00a651;     /* Success Green */
+  --color-surface: #f8fafc;    /* Clean Background */
+  
+  --font-sans: 'Inter', sans-serif;
+  
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 3rem;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   background-color: var(--color-surface);
+  color: #1e293b;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
-/* Force Table text wrapping to prevent price overflow */
-.rate-table-container {
-  width: 100%;
-  overflow-x: hidden;
+/* Fix for IOS input zoom */
+input {
+  font-size: 16px !important;
 }
-
-.rate-table {
-  width: 100%;
-  table-layout: fixed; /* Crucial for keeping prices in the box */
-}
-
-.rate-table td {
-  padding: 12px 8px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-/* Mobile Safari Input Fix */
-input { font-size: 16px !important; }
-
-/* Custom Animation for Rate Box */
-@keyframes star-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); color: #fbbf24; }
-}
-.star-animate { animation: star-pulse 2s infinite; }
