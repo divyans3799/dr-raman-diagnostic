@@ -8,9 +8,7 @@
   --color-surface: #f8fafc;
 }
 
-html { 
-  scroll-behavior: smooth; 
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -18,23 +16,27 @@ body {
   background-color: var(--color-surface);
   color: #1e293b;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* MOBILE PRICE OVERFLOW FIX */
+@media (max-width: 640px) {
+  .price-text {
+    font-size: 1.25rem !important; /* Forces smaller font on mobile */
+    line-height: 1.2 !important;
+  }
+  .mrp-text {
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Prevent zoom on mobile focus */
+input {
+  font-size: 16px !important;
 }
 
 .glass-nav {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-}
-
-@media print {
-  .no-print { display: none !important; }
-}
-
-.package-card {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.package-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px -12px rgba(0, 74, 153, 0.3);
 }
