@@ -14,29 +14,28 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background-color: var(--color-surface);
-  color: #1e293b;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
-/* MOBILE PRICE OVERFLOW FIX */
+/* Rate List Table Fix for Mobile */
+.rate-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.rate-table td {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* Search Autocomplete Styling */
+.search-suggestion-box {
+  max-height: 250px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
 @media (max-width: 640px) {
-  .price-text {
-    font-size: 1.25rem !important; /* Forces smaller font on mobile */
-    line-height: 1.2 !important;
-  }
-  .mrp-text {
-    font-size: 0.7rem !important;
-  }
-}
-
-/* Prevent zoom on mobile focus */
-input {
-  font-size: 16px !important;
-}
-
-.glass-nav {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  .price-text { font-size: 1.1rem !important; }
+  .rate-list-text { font-size: 12px !important; }
 }
