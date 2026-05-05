@@ -14,24 +14,33 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background-color: var(--color-surface);
+  color: #1e293b;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
 }
 
-/* Mobile Menu Slide Animation */
-.mobile-menu-enter { transform: translateX(100%); }
-.mobile-menu-enter-active { transform: translateX(0); transition: transform 0.3s ease-out; }
-
-/* Critical Print Fix */
-@media print {
-  body * { visibility: hidden; }
-  #printable-area, #printable-area * { visibility: visible; }
-  #printable-area { position: absolute; left: 0; top: 0; width: 100%; }
-  .no-print { display: none !important; }
+/* Fix for mobile card pricing overflow */
+.price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0; /* Ensures container can shrink */
 }
 
-/* Mobile touch target improvements */
-@media (max-width: 768px) {
-  button, a { min-height: 44px; }
-  input { font-size: 16px !important; } /* Prevents iOS zoom on focus */
+@media (max-width: 640px) {
+  .price-text {
+    font-size: 1.5rem !important; /* Forces smaller font on mobile to stay in box */
+    line-height: 1 !important;
+  }
+}
+
+/* Mobile Safari Input Fix */
+input {
+  font-size: 16px !important;
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
