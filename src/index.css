@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #004a99;
+  --color-secondary: #e31e24;
+  --color-accent: #00a651;
+  --color-glass: rgba(255, 255, 255, 0.8);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f1f5f9;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth Scrolling for the Clickable Tabs */
+html {
+  scroll-behavior: smooth;
+}
